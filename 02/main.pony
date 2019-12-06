@@ -7,8 +7,12 @@ actor Main is TestList
   let env: Env
   new create(env': Env) =>
     env = env'
-    // PonyTest(env', this)
-    IO("02/input.txt", env', this~next())
+    try
+      if env.args(1)? == "test" then
+        PonyTest(env, this)
+      end
+    else None end
+    IO("02/input.txt", env, this~next())
 
   fun next(source: String) =>
     try
