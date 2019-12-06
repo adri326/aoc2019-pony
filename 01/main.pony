@@ -6,7 +6,8 @@ actor Main
     env = env'
     IO("01/input.txt", env, this~calc_mass())
 
-  fun calc_mass(bits: Array[String val] val) =>
+  fun calc_mass(source: String) =>
+    let bits = recover box source.split_by("\n") end
     var sum = I32(0)
     var sum' = I32(0)
     for bit in bits.values() do
